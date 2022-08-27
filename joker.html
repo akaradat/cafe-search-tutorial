@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Mitr"
+    />
+    <title>Joker</title>
+    <style>
+      body {
+        font-family: 'Mitr', sans-serif;
+      }
+
+      #quote-box {
+        position: absolute;
+        top: 90px;
+        left: 750px;
+      }
+
+      #quote {
+        width: 500px;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 40px;
+        color: white;
+      }
+
+      #author {
+        position: absolute;
+        right: 0px;
+        font-size: 1.5em;
+        color: rgb(52 255 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img
+        src="https://cdn.vox-cdn.com/thumbor/5adsfrGpiJQODZDafvX7V7WPSH4=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/23285532/E72012B9_32D6_43E9_B3C7_9F7D5A37EE36.jpeg"
+        alt=""
+        srcset=""
+      />
+      <div id="quote-box">
+        <div id="quote">
+          งานการไม่ทำ ขยันจำแต่คำคมขยันจำแต่คำคมขยันจำแต่คำคม
+        </div>
+        <div id="author">- Joker -</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    fetch(' http://localhost:3000/quotes')
+      .then((response) => response.json())
+      .then((datas) => {
+        const data = datas[Math.floor(Math.random() * datas.length)];
+        document.getElementById('quote').innerHTML = `" ${data.quote.substring(
+          0,
+          150
+        )} "`;
+        // document.getElementById('author').innerHTML = 'cr. ' + data.character;
+      });
+  </script>
+</html>
